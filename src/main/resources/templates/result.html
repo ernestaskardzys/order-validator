@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Validate request: result</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <h1>Result</h1>
+    <p th:text="'status: ' + ${validateRequest.status}"/>
+    <p th:text="'request: ' + ${validateRequest.request}"/>
+
+    <div th:if="${not #lists.isEmpty(validateRequest.errorMessages)}">
+        <table>
+            <thead>
+            <tr>
+                <th>List of errors</th>
+            </tr>
+            </thead>
+            <tr th:each="h: ${validateRequest.errorMessages}">
+                <td th:text="${h}"/>
+            </tr>
+        </table>
+    </div>
+
+    <a href="/validate">Validate another request</a>
+    <a href="/history">Show history of all requests</a>
+</body>
+</html>

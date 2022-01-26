@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  db:
+    image: postgres:14-alpine3.14
+    restart: always
+    environment:
+      POSTGRES_DB: 'godtask'
+      POSTGRES_USER: 'godtask'
+      POSTGRES_PASSWORD: 'godtask'
+    ports:
+      - '5432:5432'
+    expose:
+      - '5432'

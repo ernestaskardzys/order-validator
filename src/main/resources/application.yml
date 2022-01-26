@@ -1,0 +1,22 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/godtask
+    username: godtask
+    password: godtask
+
+god:
+  valid-departments:
+    - GOoD analysis department
+    - GOoD repair department
+    - GOoD replacement department
+    - GOoD destroying department
+  errors:
+    incorrect-end-date: Incorrect endDate date - must be not empty and after specified date

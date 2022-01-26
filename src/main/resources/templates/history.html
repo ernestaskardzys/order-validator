@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Validate request history</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Result</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Request</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tr th:each="h: ${history}">
+            <td th:text="${h.request}" />
+            <td th:text="${h.status}" />
+        </tr>
+    </table>
+    <a href="/validate">Validate another request</a>
+</body>
+</html>

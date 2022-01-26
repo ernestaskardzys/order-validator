@@ -1,0 +1,32 @@
+### Analysis
+
+POST http://localhost:8080/api/validate
+Content-Type: application/json
+
+{"type":"ANALYSIS","department":"GOoD analysis department","start_date":"2020-08-13","end_date":"2020-08-15","currency":"USD","cost":123.12,
+  "parts":[{"inventory_number":"InventoryNumber1","name":"PartNumber1","count":1},{"inventory_number":"InventoryNumber2","name":"PartNumber2","count":2}]}
+
+### Repair
+
+POST http://localhost:8080/api/validate
+Content-Type: application/json
+
+{"type":"REPAIR","department":"GOoD repair department","start_date":"2020-08-13","end_date":"2020-08-16","analysis_date":"2020-08-14","test_date":"2020-08-15",
+  "responsible_person":"GOoD repair master","currency":"USD","cost":123.12,"parts":[{"inventory_number":"InventoryNumber3","name":"PartNumber3","count":3},
+  {"inventory_number":"InventoryNumber4","name":"PartNumber4","count":4}]}
+
+### Replacement
+
+POST http://localhost:8080/api/validate
+Content-Type: application/json
+
+{"type":"REPLACEMENT","department":"GOoD replacement department","start_date":"2020-08-13","end_date":"2020-08-16","factory_name":"GOoDfactory",
+  "factory_order_number":"DE12345678","currency":"USD","cost":123.12,"parts":[{"inventory_number":"InventoryNumber5","name":"PartNumber5","count":5},
+{"inventory_number":"InventoryNumber6","name":"PartNumber6","count":6}]}
+
+### A new, DESTROYING, order:
+
+POST http://localhost:8080/api/validate
+Content-Type: application/json
+
+{"type":"DESTROYING","department":"GOoD destroying department","start_date":"2020-08-13","end_date":"2020-08-15","currency":"USD","cost":123.12, "action": "boom!"}
