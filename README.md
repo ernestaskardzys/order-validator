@@ -1,3 +1,16 @@
+### Testing the project
+
+To test the project, use these web endpoints:
+
+- GET http://localhost:8080/history - lists all the historical requests.
+- GET http://localhost:8080/validate - dialog to enter order JSON and check if it's valid
+
+To test REST endpoint use:
+
+- POST http://localhost:8080/api/validate
+
+Alternatively, you can use prepared requests in `etc/Requests.http` file.
+
 ### Building and running the project
 
 Start database by executing:
@@ -12,14 +25,18 @@ mvn clean package
 java -jar target/godtask.jar
 ```
 
-### Testing the project
+### Building and running the project with Docker Compose
 
-To test the project, use these endpoints:
+In order to run application with database inside the Docker containers, you need to compile the project:
 
-- http://localhost:8080/history - lists all the historical requests.
-- http://localhost:8080/validate - dialog to enter order JSON and check if it's valid
+```bash
+mvn clean package
+```
 
-If you want to test REST requests, please use prepared requests in `etc/Requests.http` file.
+And run the project:
+```
+docker compose -f docker-compose-all-stack.yaml up
+```
 
 ### Main technologies used
 
@@ -34,7 +51,7 @@ If you want to test REST requests, please use prepared requests in `etc/Requests
 
 ### Main principle
 
-Request is validated by using Hibernate Validator's annotations - most of them custom made (please see package `info.ernestas.godtask.service` for code) - and later inserting the request into the database.
+Request is validated by using Hibernate Validator's annotations - most of them custom-made (please see package `info.ernestas.godtask.service` for code) - and later inserting the request into the database.
 
 ### Adding a new WorkType
 
