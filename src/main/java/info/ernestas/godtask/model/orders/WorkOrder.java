@@ -8,7 +8,7 @@ import info.ernestas.godtask.service.validator.constraint.BeforeToday;
 import info.ernestas.godtask.service.validator.constraint.ValidDepartment;
 import info.ernestas.godtask.service.validator.constraint.Iso4217Currency;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.DecimalMin;
@@ -26,7 +26,7 @@ import java.time.LocalDate;
         @JsonSubTypes.Type(value = ReplacementWorkOrder.class, name = "REPLACEMENT"),
         @JsonSubTypes.Type(value = DestroyingWorkOrder.class, name = "DESTROYING")
 })
-@Data
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @AfterDate(baseField = "endDate", startDateField = "startDate", message = "{god.incorrectEndDate}")
