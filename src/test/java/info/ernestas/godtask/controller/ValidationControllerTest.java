@@ -174,6 +174,15 @@ class ValidationControllerTest extends BaseTest {
         assertInvalidResponse(response, "parts: Inventory number must not be empty", "GOoD replacement department");
     }
 
+    @Test
+    void whenInvalidJsonMessageIsSent_returnBadRequestMessageToTheClient() throws Exception {
+        mockMvc.perform(
+                        post("/api/validate")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content("{\"type\":\"REPLACEMENT\", NOT A PROPER JSON HERE}"))
+                .andExpect(status().isBadRequest());
+    }
+
     private void assertValidResponse(ValidationResponse response, String department) {
         assertEquals(response.getStatus(), ValidationRequestStatus.VALID);
         assertThat(response.getRequest().length(), greaterThan(0));
