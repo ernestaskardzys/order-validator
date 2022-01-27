@@ -82,7 +82,9 @@ class AdministratorControllerTest extends BaseTest {
         mockMvc.perform(post("/validate")
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                         .param("request", invalidRequest))
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is5xxServerError())
+                .andExpect(view().name("error"))
+                .andExpect(model().attribute("error", is("Order is not valid")));
 
         var validationRequests = repository.findAll();
         assertThat(validationRequests.size(), is(0));

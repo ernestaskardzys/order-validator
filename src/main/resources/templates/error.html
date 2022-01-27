@@ -6,6 +6,7 @@
 </head>
 <body>
     <h2>Oh no, an error!</h2>
+    <p th:text="'Message: ' + ${error}"/>
     Check:
     <a href="/validate">Validate another request</a>
     <a href="/history">Show history of all requests</a>
